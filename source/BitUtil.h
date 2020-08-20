@@ -1,19 +1,19 @@
 class BitUtil
 {
 	public:
-		static int bit(int position, int value)
+		static int getBit(int position, int value)
 		{
 			return ((value & (0x1 << (position))) >> position) & 0x1;
 		}
 		
-		static short bit(int position, short value)
+		static short getBit(int position, short value)
 		{
-			return (short) bit(position, (int) value);
+			return (short) getBit(position, (int) value);
 		}
 		
-		static char bit(int position, char value)
+		static char getBit(int position, char value)
 		{
-			return (char) bit(position, (int) value);
+			return (char) getBit(position, (int) value);
 		}
 		
 		static int setBit(int position, int value, int destination)
@@ -98,7 +98,7 @@ class BitUtil
 			
 			for (int i = 0; i < 32; i++)
 			{
-				parity ^= bit(i, input);
+				parity ^= getBit(i, input);
 			}
 			
 			return parity;
