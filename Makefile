@@ -13,3 +13,4 @@ test:
 
 clean:
 	rm -rf build/ || continue
+	rm lib/* || continue
