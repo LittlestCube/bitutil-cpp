@@ -1,1 +1,5 @@
-BitUtil
+build/
+source/BitUtil
+lib/BitUtil.a
+test.cpp
+test
