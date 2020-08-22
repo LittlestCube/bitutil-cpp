@@ -19,7 +19,7 @@ namespace BitUtil
 	
 	
 	
-	void setBit(int position, int value, unsigned short &destination)
+	void setBit(int position, int value, int &destination)
 	{
 		value %= 2;
 		
@@ -34,13 +34,22 @@ namespace BitUtil
 		}
 	}
 	
-	void setBit(int position, int value, unsigned char &destination)
+	void setBit(int position, int value, unsigned short &destination)
 	{
-		unsigned short cval = destination;
+		int cval = destination;
 		
 		setBit(position, value, cval);
 		
-		destination = (short) cval;
+		destination = (int) cval;
+	}
+	
+	void setBit(int position, int value, unsigned char &destination)
+	{
+		int cval = destination;
+		
+		setBit(position, value, cval);
+		
+		destination = (int) cval;
 	}
 	
 	
