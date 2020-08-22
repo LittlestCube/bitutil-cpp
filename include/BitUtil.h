@@ -8,11 +8,15 @@ namespace BitUtil
 	
 	char getBit(int position, char value);
 	
-	int setBit(int position, int value, int destination);
+	void setBit(int position, int value, unsigned short &destination);
+	
+	void setBit(int position, int value, unsigned char &destination);
 	
 	
 	
-	int setByte(int position, int nbyte, int val);
+	void setByte(int position, int nbyte, int &val);
+	
+	void setByte(int position, int nbyte, unsigned short &val);
 	
 	int subByte(int position, int val);
 	

@@ -17,7 +17,9 @@ namespace BitUtil
 		return (char) getBit(position, (int) value);
 	}
 	
-	int setBit(int position, int value, int destination)
+	
+	
+	void setBit(int position, int value, unsigned short &destination)
 	{
 		value %= 2;
 		
@@ -30,21 +32,35 @@ namespace BitUtil
 		{
 			destination |= (0x1 << position);
 		}
+	}
+	
+	void setBit(int position, int value, unsigned char &destination)
+	{
+		unsigned short cval = destination;
 		
-		return destination;
+		setBit(position, value, cval);
+		
+		destination = (short) cval;
 	}
 	
 	
 	
-	int setByte(int position, int nbyte, int val)
+	void setByte(int position, int ibyte, int &val)
 	{
-		nbyte = nbyte & 0xFF;
+		ibyte = ibyte & 0xFF;
 		
 		int actualPosition = position * 8;
 		
-		val = (short) ((nbyte << actualPosition) | (val & ~(0xFF << actualPosition)));
+		val = (short) ((ibyte << actualPosition) | (val & ~(0xFF << actualPosition)));
+	}
+	
+	void setByte(int position, int ibyte, unsigned short &val)
+	{
+		int sval = val;
 		
-		return val;
+		setByte(position, ibyte, sval);
+		
+		val = (short) sval;
 	}
 	
 	int subByte(int position, int val)
@@ -83,10 +99,10 @@ namespace BitUtil
 	
 	short craftShort(int nbyte1, int nbyte0)
 	{
-		short s = 0;
+		unsigned short s = 0;
 		
-		s = (short) setByte(0, nbyte0, s);
-		s = (short) setByte(1, nbyte1, s);
+		setByte(0, nbyte0, s);
+		setByte(1, nbyte1, s);
 		
 		return s;
 	}
