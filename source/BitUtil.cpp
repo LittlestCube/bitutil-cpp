@@ -54,23 +54,35 @@ namespace BitUtil
 	
 	
 	
-	void setByte(int position, int ibyte, int &val)
+	int subBits(int from, int to, int value)
 	{
-		ibyte = ibyte & 0xFF;
+		int bits = 0;
 		
-		int actualPosition = position * 8;
+		for (int i = from; i <= to; i++)
+		{
+			bits |= getBit(i, value) << (i - from);
+		}
 		
-		val = (short) ((ibyte << actualPosition) | (val & ~(0xFF << actualPosition)));
+		return bits;
 	}
 	
-	void setByte(int position, int ibyte, unsigned short &val)
+	void setBits(int from, int to, int directValue, unsigned short &destination)
 	{
-		int sval = val;
-		
-		setByte(position, ibyte, sval);
-		
-		val = (short) sval;
+		for (int i = from; i <= to; i++)
+		{
+			setBit(i, ((directValue & (0x1 << (i - from))) >> (i - from)), destination);
+		}
 	}
+	
+	void setBits(int from, int to, int directValue, unsigned char &destination)
+	{
+		for (int i = from; i <= to; i++)
+		{
+			setBit(i, ((directValue & (0x1 << (i - from))) >> (i - from)), destination);
+		}
+	}
+	
+	
 	
 	int subByte(int position, int val)
 	{
@@ -82,6 +94,24 @@ namespace BitUtil
 	short subByte(int position, short val)
 	{
 		return (short) subByte(position, (int) val);
+	}
+	
+	void setByte(int position, int ibyte, int &destination)
+	{
+		ibyte = ibyte & 0xFF;
+		
+		int actualPosition = position * 8;
+		
+		destination = (short) ((ibyte << actualPosition) | (destination & ~(0xFF << actualPosition)));
+	}
+	
+	void setByte(int position, int ibyte, unsigned short &val)
+	{
+		int sval = val;
+		
+		setByte(position, ibyte, sval);
+		
+		val = (short) sval;
 	}
 	
 	

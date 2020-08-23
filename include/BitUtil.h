@@ -16,6 +16,14 @@ namespace BitUtil
 	
 	
 	
+	int subBits(int from, int to, int value);
+	
+	void setBits(int from, int to, int directValue, unsigned short &destination);
+	
+	void setBits(int from, int to, int directValue, unsigned char &destination);
+	
+	
+	
 	void setByte(int position, int nbyte, int &val);
 	
 	void setByte(int position, int nbyte, unsigned short &val);
