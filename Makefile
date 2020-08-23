@@ -5,11 +5,10 @@ bulk:
 	mkdir build/
 	cd build && g++ -c ../source/*.cpp -o BitUtil.o -I../include
 	mkdir lib || continue
-	cd build && ar rcs ../lib/BitUtil.a BitUtil.o
+	cd build && ar rcs ../lib/libbit.a BitUtil.o
 
 test:
-	cd build && g++ -c ../test.cpp -o test.o -I../include
-	cd build && g++ -o test test.o ../lib/BitUtil.a
+	cd build && g++ ../test.cpp -o test -I../include -L../lib -lbit
 	./build/test
 
 clean:
