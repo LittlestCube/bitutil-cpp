@@ -1,4 +1,4 @@
-all: bulk test
+all: bulk
 
 bulk:
 	rm -rf build/ || continue
