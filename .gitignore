@@ -3,3 +3,5 @@ source/BitUtil
 lib/BitUtil.a
 test.cpp
 test
+.DS_*
+._*
