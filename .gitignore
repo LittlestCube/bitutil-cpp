@@ -1,4 +1,5 @@
 build/
+lib/
 source/BitUtil
 lib/BitUtil.a
 test.cpp

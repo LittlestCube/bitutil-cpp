@@ -40,7 +40,7 @@ namespace BitUtil
 		
 		setBit(position, value, cval);
 		
-		destination = (int) cval;
+		destination = (unsigned short) cval;
 	}
 	
 	void setBit(int position, int value, unsigned char &destination)
@@ -49,7 +49,7 @@ namespace BitUtil
 		
 		setBit(position, value, cval);
 		
-		destination = (int) cval;
+		destination = (unsigned char) cval;
 	}
 	
 	
