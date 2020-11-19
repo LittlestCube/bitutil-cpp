@@ -8,4 +8,4 @@ test:
 	@$(MAKE) -s --no-print-directory -f Makefile.unix test
 
 3ds:
-	@$(MAKE) -s --no-print-directory -f Makefile.3ds
+	@$(MAKE) --no-print-directory -f Makefile.3ds
